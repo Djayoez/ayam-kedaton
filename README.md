@@ -64,6 +64,30 @@ If you want to publish with GitHub, you should install Git first.
    - Push this project to the repository
    - Enable GitHub Pages from repository settings
 
+## Netlify CMS (optional)
+
+This project includes a basic Netlify CMS setup so you can edit content via a dashboard.
+
+What was added:
+- `admin/config.yml` — Netlify CMS configuration
+- `admin/index.html` — CMS admin UI
+- `content/` — JSON files for `home`, `menu`, and `testimonials`
+
+How it works:
+- Deploy this repo to Netlify (recommended) and enable **Identity** and **Git Gateway** in the Netlify dashboard.
+- Open `/admin/` on your site (e.g., `https://your-site.netlify.app/admin/`) to log in and edit content.
+- The CMS will commit JSON files back to the Git repo and Netlify will rebuild the site.
+
+Netlify setup steps (short):
+1. Create a site on https://app.netlify.com and connect your GitHub repo.
+2. In your site dashboard → "Identity", enable Identity and invite users or enable open signup.
+3. In Identity settings, enable "Git Gateway" or go to "Services" to enable Git Gateway.
+4. Visit `https://<your-site>/admin/` to log in and edit content.
+
+Notes:
+- Media uploads are configured to save into the `assets/` folder.
+- The site uses client-side JS to load content from `content/*.json`, so changes appear after Netlify finishes a build.
+
 ### Recommended workflow
 
 1. Create a Git repository for this folder.

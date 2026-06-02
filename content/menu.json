@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "name": "Ayam Panggang Original",
+      "description": "Bumbu bakar khas Kedaton, aroma rempah menggugah selera",
+      "price": "Rp 35.000",
+      "image": "assets/menu-1.jpg"
+    },
+    {
+      "name": "Ayam Panggang Pedas",
+      "description": "Cocok untuk pecinta pedas – level bisa disesuaikan",
+      "price": "Rp 37.000",
+      "image": "assets/menu-2.jpg"
+    },
+    {
+      "name": "Ayam Panggang Madu",
+      "description": "Manis gurih dengan glaze madu pilihan",
+      "price": "Rp 38.000",
+      "image": "assets/menu-3.jpg"
+    },
+    {
+      "name": "Ayam Goreng Kremes",
+      "description": "Renyah di luar, juicy di dalam",
+      "price": "Rp 33.000",
+      "image": "assets/menu-4.jpg"
+    },
+    {
+      "name": "Ayam Goreng Lengkuas",
+      "description": "Bumbu lengkuas yang meresap sempurna",
+      "price": "Rp 33.000",
+      "image": "assets/menu-5.jpg"
+    }
+  ]
+}
