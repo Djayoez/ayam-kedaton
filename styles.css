@@ -1,0 +1,369 @@
+/* =============================================
+   AYAM KEDATON – Main Stylesheet
+   Mobile-first. Edit CSS variables at the top
+   to change brand colors instantly.
+   ============================================= */
+
+/* --- 1. CSS Variables (Brand Tokens) --- */
+:root {
+  --color-primary:   #C8522A;   /* burnt orange – main brand color  */
+  --color-secondary: #F5A623;   /* golden yellow – accents          */
+  --color-dark:      #2C1A0E;   /* deep brown – text                */
+  --color-light:     #FFF8F2;   /* warm off-white – background      */
+  --color-surface:   #FFFFFF;   /* card background                  */
+  --color-muted:     #7A6050;   /* secondary text                   */
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  --radius-card: 16px;
+  --shadow-card: 0 4px 20px rgba(44, 26, 14, 0.10);
+  --max-width: 1100px;
+}
+
+/* --- 2. Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { text-decoration: none; color: inherit; }
+
+/* --- 3. Layout Utility --- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* --- 4. Header --- */
+.site-header {
+  background: var(--color-surface);
+  box-shadow: 0 2px 12px rgba(44,26,14,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 14px 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+/* --- 5. Hero --- */
+.hero {
+  background: var(--color-dark);
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.hero-copy {
+  padding: 36px 20px 40px;
+  text-align: center;
+}
+
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.hero-sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+/* --- 6. Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(200, 82, 42, 0.35);
+}
+
+.btn-wa      { background: #25D366; color: #fff; }
+.btn-gofood  { background: #E82529; color: #fff; }
+.btn-grab    { background: #00B14F; color: #fff; }
+.btn-shopee  { background: #EE4D2D; color: #fff; }
+
+.btn-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* --- 7. Section Headers --- */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  margin-bottom: 36px;
+}
+
+/* --- 8. Menu Section --- */
+.menu {
+  padding: 60px 0;
+}
+
+.category-label {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--color-dark);
+  margin-bottom: 18px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-secondary);
+  display: inline-block;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.menu-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(44,26,14,0.14);
+}
+
+.menu-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.menu-info {
+  padding: 16px 18px 20px;
+  position: relative;
+}
+
+.menu-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-dark);
+  margin-bottom: 6px;
+}
+
+.menu-desc {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.menu-price {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.badge {
+  display: inline-block;
+  background: var(--color-secondary);
+  color: var(--color-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 8px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.menu-card--featured {
+  border: 2px solid var(--color-secondary);
+}
+
+/* --- 9. Order Section --- */
+.order {
+  background: var(--color-dark);
+  color: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.order .section-title { color: var(--color-secondary); }
+.order .section-sub   { color: rgba(255,255,255,0.65); }
+
+.order-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 48px;
+}
+
+.hours {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-card);
+  padding: 24px 32px;
+  display: inline-block;
+  text-align: left;
+}
+
+.hours-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+
+.hours p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.80);
+  line-height: 1.8;
+}
+
+/* --- 10. Footer --- */
+.site-footer {
+  background: #1a0f07;
+  color: rgba(255,255,255,0.6);
+  padding: 40px 0 28px;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-secondary);
+  margin-bottom: 8px;
+}
+
+.footer-address {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.footer-socials img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  opacity: 0.75;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.footer-socials a:hover img {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  opacity: 0.45;
+}
+
+/* --- 11. Responsive — Tablet & up --- */
+@media (min-width: 640px) {
+  .hero-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero-img {
+    width: 45%;
+    max-height: 420px;
+    flex-shrink: 0;
+  }
+
+  .hero-copy {
+    text-align: left;
+    padding: 48px 40px;
+  }
+}
+
+@media (min-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
