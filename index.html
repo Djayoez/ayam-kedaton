@@ -17,27 +17,73 @@
   <!-- ===== HEADER ===== -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Replace src with actual logo path, e.g. "assets/logo.png" -->
-      <img src="assets/logo.png" alt="Ayam Kedaton Logo" class="logo" />
-      <div class="brand-text">
-        <h1 class="brand-name">Ayam Kedaton</h1>
-        <p class="brand-tagline">Cita Rasa Nusantara yang Otentik</p>
-      </div>
+      <a href="#" class="brand">
+        <img src="assets/logo.png" alt="Ayam Kedaton Logo" class="logo" />
+        <div class="brand-text">
+          <h1 class="brand-name">Ayam Kedaton</h1>
+          <p class="brand-tagline">Cita Rasa Nusantara yang Otentik</p>
+        </div>
+      </a>
+
+      <button class="nav-toggle" aria-label="Buka menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="#menu">Menu</a>
+        <a href="#about">Tentang</a>
+        <a href="#order">Pesan</a>
+        <a href="#contact">Kontak</a>
+      </nav>
     </div>
   </header>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container hero-inner">
-      <!-- Use an existing menu image as the hero image -->
-      <img src="assets/menu-1.jpg" alt="Ayam Kedaton signature dish" class="hero-img" />
       <div class="hero-copy">
-        <h2 class="hero-headline">Ayam Panggang & Goreng <br />Ala Kedaton</h2>
+        <span class="eyebrow">Ayam Kedaton</span>
+        <h2 class="hero-headline">Ayam Panggang &amp; Goreng<br />Ala Kedaton</h2>
         <p class="hero-sub">
-          Dimasak dengan bumbu rempah pilihan,<br />
-          langsung dari dapur kami untuk meja Anda.
+          Dimasak dengan bumbu rempah pilihan, langsung dari dapur kami untuk meja Anda.
         </p>
-        <a href="#order" class="btn btn-primary">Pesan Sekarang</a>
+        <div class="hero-actions">
+          <a href="#order" class="btn btn-primary">Pesan Sekarang</a>
+          <a href="#menu" class="btn btn-secondary">Lihat Menu</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/menu-1.jpg" alt="Ayam Kedaton signature dish" class="hero-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="highlight" id="about">
+    <div class="container highlight-inner">
+      <div class="highlight-copy">
+        <span class="eyebrow">Kenapa Pilih Kami</span>
+        <h2 class="section-title">Ayam Kedaton untuk setiap momen keluarga</h2>
+        <p class="section-sub">Hidangan ayam terbaik dengan bumbu rumah, layanan cepat, dan presentasi yang menarik.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h3>Bumbu Otentik</h3>
+          <p>Resep tradisional yang kaya rempah, dibuat setiap hari dengan bahan segar.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <h3>Pesan Cepat</h3>
+          <p>Siap antar atau ambil dalam hitungan menit untuk kenyamanan Anda.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🥘</div>
+          <h3>Porsi Hemat</h3>
+          <p>Paket keluarga dan pilihan menu ekonomis untuk makan bersama.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -176,13 +222,18 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
+  <footer class="site-footer" id="contact">
     <div class="container footer-inner">
-      <p class="footer-brand">Ayam Kedaton</p>
-      <p class="footer-address">
-        WhatsApp: <a href="https://wa.me/6281932320826" target="_blank">+62 819-3232-0826</a><br />
-        Jl. [Nama Jalan], [Kelurahan], [Kota]
-      </p>
+      <div class="footer-copy-block">
+        <p class="footer-brand">Ayam Kedaton</p>
+        <p class="footer-text">Hubungi kami untuk pesan langsung atau kunjungi lapak kami hari ini.</p>
+      </div>
+      <div class="footer-contact">
+        <p class="footer-address">
+          WhatsApp: <a href="https://wa.me/6281932320826" target="_blank">+62 819-3232-0826</a>
+        </p>
+        <p class="footer-address">Jl. [Nama Jalan], [Kelurahan], [Kota]</p>
+      </div>
       <div class="footer-socials">
         <a href="https://instagram.com/YOURHANDLE" target="_blank">
           <img src="assets/icons/instagram.png" alt="Instagram Ayam Kedaton" />
@@ -195,5 +246,19 @@
     </div>
   </footer>
 
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const header = document.querySelector('.site-header');
+
+    navToggle?.addEventListener('click', () => {
+      header.classList.toggle('nav-open');
+    });
+
+    document.querySelectorAll('.main-nav a').forEach((link) => {
+      link.addEventListener('click', () => {
+        header.classList.remove('nav-open');
+      });
+    });
+  </script>
 </body>
 </html>
