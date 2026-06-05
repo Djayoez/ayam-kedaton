@@ -10,5 +10,9 @@ Thumbs.db
 *.log
 *.tmp
 
-# Archive files
+# Archive and media files
 *.zip
+*.mp4
+
+# Dev screenshots
+screenshots/

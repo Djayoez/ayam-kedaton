@@ -1,0 +1,23 @@
+{
+  "name": "ayam-kedaton-sanity",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "seed": "node seed.js",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.22.1",
+    "@sanity/default-layout": "^2.36.2",
+    "@sanity/default-login": "^2.36.2",
+    "@sanity/desk-tool": "^2.36.2",
+    "@sanity/vision": "^5.29.0",
+    "sanity": "^5.29.0",
+    "styled-components": "^6.1.15"
+  },
+  "devDependencies": {
+    "@sanity/cli": "^6.7.1"
+  }
+}

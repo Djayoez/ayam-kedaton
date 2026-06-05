@@ -64,35 +64,53 @@ If you want to publish with GitHub, you should install Git first.
    - Push this project to the repository
    - Enable GitHub Pages from repository settings
 
-## Netlify CMS (optional)
+## CMS integration
 
-This project includes a basic Netlify CMS setup so you can edit content via a dashboard.
+The website now supports both:
 
-What was added:
-- `admin/config.yml` — Netlify CMS configuration
-- `admin/index.html` — CMS admin UI
-- `content/` — JSON files for `home`, `menu`, and `testimonials`
+- static fallback content from `content/*.json`
+- optional Sanity content from a Sanity project via `sanity-config.js`
 
-How it works:
-- Deploy this repo to Netlify (recommended) and enable **Identity** and **Git Gateway** in the Netlify dashboard.
-- Open `/admin/` on your site (e.g., `https://your-site.netlify.app/admin/`) to log in and edit content.
-- The CMS will commit JSON files back to the Git repo and Netlify will rebuild the site.
+### Sanity setup (recommended)
 
-Netlify setup steps (short):
-1. Create a site on https://app.netlify.com and connect your GitHub repo.
-2. In your site dashboard → "Identity", enable Identity and invite users or enable open signup.
-3. In Identity settings, enable "Git Gateway" or go to "Services" to enable Git Gateway.
-4. Visit `https://<your-site>/admin/` to log in and edit content.
+1. Create a Sanity account at https://www.sanity.io.
+2. Create a new project and dataset, for example `production`.
+3. Add the document types below in your Sanity Studio:
+   - `siteSettings`
+   - `menuItem`
+   - `testimonial`
+4. Replace `projectId` in `sanity-config.js` with your actual Sanity project ID.
+To run the local Sanity Studio in this repo:
 
-Notes:
-- Media uploads are configured to save into the `assets/` folder.
-- The site uses client-side JS to load content from `content/*.json`, so changes appear after Netlify finishes a build.
+```powershell
+cd sanity
+npm install
+npm run dev
+```
+### Example Sanity schemas
 
-### Recommended workflow
+- `siteSettings`
+  - `eyebrow` (string)
+  - `headline` (text)
+  - `sub` (text)
+  - `heroImage` (image)
 
-1. Create a Git repository for this folder.
-2. Push it to GitHub.
-3. Deploy from GitHub to Netlify or Vercel.
+- `menuItem`
+  - `name` (string)
+  - `description` (text)
+  - `price` (string)
+  - `image` (image)
+
+- `testimonial`
+  - `author` (string)
+  - `text` (text)
+
+You can also copy these examples into your own Sanity Studio project from `sanity/schemas/`.
+
+### How the site loads content
+
+- If `sanity-config.js` contains a valid `projectId`, the page will fetch content from Sanity.
+- If not, the site falls back to the static JSON files in `content/`.
 
 ## Domain name
 

@@ -3,84 +3,117 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayam Kedaton – Menu</title>
+  <title>Ayam Kedaton – Cita Rasa Nusantara yang Otentik</title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
 
+  <!-- Grain texture overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
   <!-- ===== HEADER ===== -->
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="container header-inner">
       <a href="#" class="brand">
         <img src="assets/logo.png" alt="Ayam Kedaton Logo" class="logo" />
         <div class="brand-text">
-          <h1 class="brand-name">Ayam Kedaton</h1>
-          <p class="brand-tagline">Cita Rasa Nusantara yang Otentik</p>
+          <span class="brand-name">Ayam Kedaton</span>
+          <span class="brand-tagline">Cita Rasa Nusantara yang Otentik</span>
         </div>
       </a>
 
-      <button class="nav-toggle" aria-label="Buka menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
 
-      <nav class="main-nav">
-        <a href="#menu">Menu</a>
+      <nav class="main-nav" id="main-nav" role="navigation">
         <a href="#about">Tentang</a>
+        <a href="#menu">Menu</a>
         <a href="#order">Pesan</a>
         <a href="#contact">Kontak</a>
+        <a href="#order" class="nav-cta">Pesan Sekarang</a>
       </nav>
     </div>
   </header>
 
   <!-- ===== HERO ===== -->
-  <section class="hero">
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="assets/menu-1.jpg" alt="" class="hero-bg-img" aria-hidden="true" />
+      <div class="hero-overlay"></div>
+    </div>
+
     <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow">Ayam Kedaton</span>
-        <h2 class="hero-headline">Ayam Panggang &amp; Goreng<br />Ala Kedaton</h2>
+        <span class="eyebrow">
+          <span class="eyebrow-line"></span>
+          Kedaton Heritage Since 2020
+        </span>
+        <h1 class="hero-headline">
+          Ayam Panggang<br />
+          <em>&amp; Goreng</em><br />
+          <span class="headline-gradient">Ala Kedaton</span>
+        </h1>
         <p class="hero-sub">
           Dimasak dengan bumbu rempah pilihan, langsung dari dapur kami untuk meja Anda.
         </p>
         <div class="hero-actions">
           <a href="#order" class="btn btn-primary">Pesan Sekarang</a>
-          <a href="#menu" class="btn btn-secondary">Lihat Menu</a>
+          <a href="#menu" class="btn btn-ghost">Lihat Menu</a>
         </div>
       </div>
-      <div class="hero-media">
-        <img src="assets/menu-1.jpg" alt="Ayam Kedaton signature dish" class="hero-img" />
+
+      <div class="hero-card">
+        <span class="hero-card-num">5+</span>
+        <span class="hero-card-label">Tahun Melayani</span>
       </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="scroll-dot"></span>
     </div>
   </section>
 
   <!-- ===== ABOUT ===== -->
   <section class="highlight" id="about">
-    <div class="container highlight-inner">
-      <div class="highlight-copy">
-        <span class="eyebrow">Kenapa Pilih Kami</span>
-        <h2 class="section-title">Ayam Kedaton untuk setiap momen keluarga</h2>
+    <div class="container">
+      <div class="section-header">
+        <span class="pill-label">Kenapa Pilih Kami</span>
+        <h2 class="section-title">Ayam Kedaton untuk<br />setiap momen keluarga</h2>
         <p class="section-sub">Hidangan ayam terbaik dengan bumbu rumah, layanan cepat, dan presentasi yang menarik.</p>
       </div>
+
       <div class="feature-grid">
-        <article class="feature-card">
-          <div class="feature-icon">🔥</div>
+        <article class="feature-card reveal">
+          <div class="feature-icon-wrap">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.047 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.468 5.99 5.99 0 00-1.925 3.547 5.975 5.975 0 01-2.133-1.001A3.75 3.75 0 0012 18z"/>
+            </svg>
+          </div>
           <h3>Bumbu Otentik</h3>
           <p>Resep tradisional yang kaya rempah, dibuat setiap hari dengan bahan segar.</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-icon">🚚</div>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon-wrap">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
+            </svg>
+          </div>
           <h3>Pesan Cepat</h3>
           <p>Siap antar atau ambil dalam hitungan menit untuk kenyamanan Anda.</p>
         </article>
-        <article class="feature-card">
-          <div class="feature-icon">🥘</div>
+
+        <article class="feature-card reveal">
+          <div class="feature-icon-wrap">
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/>
+            </svg>
+          </div>
           <h3>Porsi Hemat</h3>
           <p>Paket keluarga dan pilihan menu ekonomis untuk makan bersama.</p>
         </article>
@@ -89,201 +122,421 @@
   </section>
 
   <!-- ===== MENU ===== -->
-  <section class="menu" id="menu">
+  <section class="menu-section" id="menu">
     <div class="container">
-      <h2 class="section-title">Menu Kami</h2>
-      <p class="section-sub">Semua harga sudah termasuk nasi & lalapan</p>
+      <div class="section-header">
+        <span class="pill-label pill-label--gold">Menu Pilihan</span>
+        <h2 class="section-title section-title--light">Menu Kami</h2>
+        <p class="section-sub section-sub--dim">Semua harga sudah termasuk nasi &amp; lalapan</p>
+      </div>
 
-      <!-- Category: Ayam Panggang -->
-      <h3 class="category-label">🔥 Ayam Panggang</h3>
-      <div class="menu-grid">
+      <!-- Ayam Panggang -->
+      <div class="menu-group">
+        <h3 class="category-label">Ayam Panggang</h3>
+        <div class="menu-grid" id="menu-grid">
+          <div class="menu-card reveal">
+            <div class="menu-img-wrap">
+              <img src="assets/menu-1.jpg" alt="Ayam Panggang Original" class="menu-img" loading="lazy" />
+              <div class="menu-img-overlay"></div>
+              <span class="price-tag">Rp 35.000</span>
+            </div>
+            <div class="menu-body">
+              <h4 class="menu-name">Ayam Panggang Original</h4>
+              <p class="menu-desc">Bumbu bakar khas Kedaton, aroma rempah menggugah selera</p>
+            </div>
+          </div>
 
-        <div class="menu-card">
-          <img src="assets/menu-1.jpg" alt="Ayam Panggang Original" class="menu-img" />
-          <div class="menu-info">
-            <h4 class="menu-name">Ayam Panggang Original</h4>
-            <p class="menu-desc">Bumbu bakar khas Kedaton, aroma rempah menggugah selera</p>
-            <span class="menu-price">Rp 35.000</span>
+          <div class="menu-card reveal">
+            <div class="menu-img-wrap">
+              <img src="assets/menu-2.jpg" alt="Ayam Panggang Pedas" class="menu-img" loading="lazy" />
+              <div class="menu-img-overlay"></div>
+              <span class="price-tag">Rp 37.000</span>
+            </div>
+            <div class="menu-body">
+              <h4 class="menu-name">Ayam Panggang Pedas</h4>
+              <p class="menu-desc">Cocok untuk pecinta pedas – level bisa disesuaikan</p>
+            </div>
+          </div>
+
+          <div class="menu-card reveal">
+            <div class="menu-img-wrap">
+              <img src="assets/menu-3.jpg" alt="Ayam Panggang Madu" class="menu-img" loading="lazy" />
+              <div class="menu-img-overlay"></div>
+              <span class="price-tag">Rp 38.000</span>
+            </div>
+            <div class="menu-body">
+              <h4 class="menu-name">Ayam Panggang Madu</h4>
+              <p class="menu-desc">Manis gurih dengan glaze madu pilihan</p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="menu-card">
-          <img src="assets/menu-2.jpg" alt="Ayam Panggang Pedas" class="menu-img" />
-          <div class="menu-info">
-            <h4 class="menu-name">Ayam Panggang Pedas</h4>
-            <p class="menu-desc">Cocok untuk pecinta pedas – level bisa disesuaikan</p>
-            <span class="menu-price">Rp 37.000</span>
+      <!-- Ayam Goreng -->
+      <div class="menu-group">
+        <h3 class="category-label">Ayam Goreng</h3>
+        <div class="menu-grid" id="menu-grid-2">
+          <div class="menu-card reveal">
+            <div class="menu-img-wrap">
+              <img src="assets/menu-4.jpg" alt="Ayam Goreng Kremes" class="menu-img" loading="lazy" />
+              <div class="menu-img-overlay"></div>
+              <span class="price-tag">Rp 33.000</span>
+            </div>
+            <div class="menu-body">
+              <h4 class="menu-name">Ayam Goreng Kremes</h4>
+              <p class="menu-desc">Renyah di luar, juicy di dalam</p>
+            </div>
+          </div>
+
+          <div class="menu-card reveal">
+            <div class="menu-img-wrap">
+              <img src="assets/menu-5.jpg" alt="Ayam Goreng Lengkuas" class="menu-img" loading="lazy" />
+              <div class="menu-img-overlay"></div>
+              <span class="price-tag">Rp 33.000</span>
+            </div>
+            <div class="menu-body">
+              <h4 class="menu-name">Ayam Goreng Lengkuas</h4>
+              <p class="menu-desc">Bumbu lengkuas yang meresap sempurna</p>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="menu-card">
-          <img src="assets/menu-3.jpg" alt="Ayam Panggang Madu" class="menu-img" />
-          <div class="menu-info">
-            <h4 class="menu-name">Ayam Panggang Madu</h4>
-            <p class="menu-desc">Manis gurih dengan glaze madu pilihan</p>
-            <span class="menu-price">Rp 38.000</span>
+      <!-- Paket Hemat -->
+      <div class="menu-group">
+        <h3 class="category-label">Paket Hemat</h3>
+        <div class="menu-grid">
+          <div class="menu-card menu-card--featured reveal">
+            <div class="menu-img-wrap">
+              <img src="assets/menu-paket.jpg" alt="Paket Keluarga" class="menu-img" loading="lazy" />
+              <div class="menu-img-overlay"></div>
+              <span class="price-tag">Rp 155.000</span>
+              <span class="badge-tag">Hemat 15%</span>
+            </div>
+            <div class="menu-body">
+              <h4 class="menu-name">Paket Keluarga (5 pax)</h4>
+              <p class="menu-desc">5 ayam pilihan + 5 nasi + 2 es teh – cocok untuk makan bersama</p>
+            </div>
+          </div>
+
+          <div class="menu-card menu-card--featured reveal">
+            <div class="menu-img-wrap">
+              <img src="assets/menu-box.jpg" alt="Box Kedaton" class="menu-img" loading="lazy" />
+              <div class="menu-img-overlay"></div>
+              <span class="price-tag">Rp 45.000 / box</span>
+              <span class="badge-tag">Catering</span>
+            </div>
+            <div class="menu-body">
+              <h4 class="menu-name">Box Kedaton (catering)</h4>
+              <p class="menu-desc">Ayam + nasi + lauk dalam box eksklusif Kedaton. Min. 10 box</p>
+            </div>
           </div>
         </div>
+      </div>
 
-      </div><!-- /menu-grid -->
-
-      <!-- Category: Ayam Goreng -->
-      <h3 class="category-label">🍗 Ayam Goreng</h3>
-      <div class="menu-grid">
-
-        <div class="menu-card">
-          <img src="assets/menu-4.jpg" alt="Ayam Goreng Kremes" class="menu-img" />
-          <div class="menu-info">
-            <h4 class="menu-name">Ayam Goreng Kremes</h4>
-            <p class="menu-desc">Renyah di luar, juicy di dalam</p>
-            <span class="menu-price">Rp 33.000</span>
-          </div>
-        </div>
-
-        <div class="menu-card">
-          <img src="assets/menu-5.jpg" alt="Ayam Goreng Lengkuas" class="menu-img" />
-          <div class="menu-info">
-            <h4 class="menu-name">Ayam Goreng Lengkuas</h4>
-            <p class="menu-desc">Bumbu lengkuas yang meresap sempurna</p>
-            <span class="menu-price">Rp 33.000</span>
-          </div>
-        </div>
-
-      </div><!-- /menu-grid -->
-
-      <!-- Category: Paket -->
-      <h3 class="category-label">📦 Paket Hemat</h3>
-      <div class="menu-grid">
-
-        <div class="menu-card menu-card--featured">
-          <img src="assets/menu-paket.jpg" alt="Paket Keluarga" class="menu-img" />
-          <div class="menu-info">
-            <h4 class="menu-name">Paket Keluarga (5 pax)</h4>
-            <p class="menu-desc">5 ayam pilihan + 5 nasi + 2 es teh – cocok untuk makan bersama</p>
-            <span class="menu-price">Rp 155.000</span>
-            <span class="badge">Hemat 15%</span>
-          </div>
-        </div>
-
-        <div class="menu-card menu-card--featured">
-          <img src="assets/menu-box.jpg" alt="Box Kedaton" class="menu-img" />
-          <div class="menu-info">
-            <h4 class="menu-name">Box Kedaton (catering)</h4>
-            <p class="menu-desc">Ayam + nasi + lauk dalam box eksklusif Kedaton. Min. 10 box</p>
-            <span class="menu-price">Rp 45.000 / box</span>
-            <span class="badge">Catering</span>
-          </div>
-        </div>
-
-      </div><!-- /menu-grid -->
-
-    </div><!-- /container -->
+    </div>
   </section>
 
   <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials" id="testimonials">
     <div class="container">
-      <div class="testimonial-header">
-        <span class="eyebrow">Ulasan Pelanggan</span>
-        <h2 class="section-title">Apa kata mereka tentang Ayam Kedaton</h2>
+      <div class="section-header">
+        <span class="pill-label">Ulasan Pelanggan</span>
+        <h2 class="section-title">Apa kata mereka tentang<br />Ayam Kedaton</h2>
         <p class="section-sub">Pelayanan cepat, rasa autentik, dan porsi yang pas untuk semua keluarga.</p>
       </div>
-      <div class="testimonial-grid">
-        <article class="testimonial-card">
-          <p class="testimonial-text">"Ayamnya enak sekali, bumbunya pas dan tidak terlalu pedas. Sangat cocok untuk makan bersama keluarga."</p>
-          <p class="testimonial-author">— Sari, Pelanggan Setia</p>
+
+      <div class="testi-grid">
+        <article class="testi-card reveal">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Ayamnya enak sekali, bumbunya pas dan tidak terlalu pedas. Sangat cocok untuk makan bersama keluarga.</p>
+          <footer class="testi-footer">
+            <div class="testi-avatar">S</div>
+            <div>
+              <p class="testi-name">Sari</p>
+              <p class="testi-role">Pelanggan Setia</p>
+            </div>
+          </footer>
         </article>
-        <article class="testimonial-card">
-          <p class="testimonial-text">"Pesanannya cepat sampai, tampilannya menarik, dan semua anggota keluarga suka."</p>
-          <p class="testimonial-author">— Budi, Karyawan Kantoran</p>
+
+        <article class="testi-card reveal">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Pesanannya cepat sampai, tampilannya menarik, dan semua anggota keluarga suka.</p>
+          <footer class="testi-footer">
+            <div class="testi-avatar">B</div>
+            <div>
+              <p class="testi-name">Budi</p>
+              <p class="testi-role">Karyawan Kantoran</p>
+            </div>
+          </footer>
         </article>
-        <article class="testimonial-card">
-          <p class="testimonial-text">"Paket keluarga hemat dan ayamnya tetap crispy sampai di rumah. Recommended banget!"</p>
-          <p class="testimonial-author">— Wulan, Ibu Rumah Tangga</p>
+
+        <article class="testi-card reveal">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Paket keluarga hemat dan ayamnya tetap crispy sampai di rumah. Recommended banget!</p>
+          <footer class="testi-footer">
+            <div class="testi-avatar">W</div>
+            <div>
+              <p class="testi-name">Wulan</p>
+              <p class="testi-role">Ibu Rumah Tangga</p>
+            </div>
+          </footer>
         </article>
       </div>
     </div>
   </section>
 
   <!-- ===== ORDER ===== -->
-  <section class="order" id="order">
-    <div class="container order-inner">
-      <h2 class="section-title">Pesan Sekarang</h2>
-      <p class="section-sub">Pilih platform yang paling mudah untuk Anda</p>
+  <section class="order-section" id="order">
+    <div class="container">
+      <div class="section-header">
+        <span class="pill-label pill-label--gold">Hubungi Kami</span>
+        <h2 class="section-title section-title--light">Pesan Sekarang</h2>
+        <p class="section-sub section-sub--dim">Pilih platform yang paling mudah untuk Anda</p>
+      </div>
 
-      <div class="order-buttons">
+      <div class="order-grid">
         <a href="https://wa.me/6281932320826?text=Halo%20Ayam%20Kedaton%2C%20saya%20mau%20pesan..."
-           target="_blank" class="btn btn-wa">
-          <img src="assets/icons/whatsapp.png" alt="" class="btn-icon" />
-          WhatsApp
+           target="_blank" rel="noopener" class="order-card">
+          <img src="assets/icons/whatsapp.png" alt="" class="order-icon" />
+          <span class="order-name">WhatsApp</span>
+          <span class="order-hint">Pesan langsung via chat</span>
         </a>
 
         <a href="https://r.grab.com/g/6-20260602_231611_3499ab9945774ee5b23472066f02435a_MEXMPS-6-C6TFHA2JVRAXNX"
-           target="_blank" class="btn btn-gofood">
-          <img src="assets/icons/gofood.png" alt="" class="btn-icon" />
-          GoFood
+           target="_blank" rel="noopener" class="order-card">
+          <img src="assets/icons/gofood.png" alt="" class="order-icon" />
+          <span class="order-name">GoFood</span>
+          <span class="order-hint">Antar ke rumah Anda</span>
         </a>
 
         <a href="https://r.grab.com/g/6-20260602_231611_3499ab9945774ee5b23472066f02435a_MEXMPS-6-C6TFHA2JVRAXNX"
-           target="_blank" class="btn btn-grab">
-          <img src="assets/icons/grabfood.png" alt="" class="btn-icon" />
-          GrabFood
+           target="_blank" rel="noopener" class="order-card">
+          <img src="assets/icons/grabfood.png" alt="" class="order-icon" />
+          <span class="order-name">GrabFood</span>
+          <span class="order-hint">Antar ke rumah Anda</span>
         </a>
 
-        <a href="https://shopee.co.id/YOURLINK" target="_blank" class="btn btn-shopee">
-          <img src="assets/icons/shopeefood.png" alt="" class="btn-icon" />
-          ShopeeFood
+        <a href="https://shopee.co.id/YOURLINK"
+           target="_blank" rel="noopener" class="order-card">
+          <img src="assets/icons/shopeefood.png" alt="" class="order-icon" />
+          <span class="order-name">ShopeeFood</span>
+          <span class="order-hint">Promo &amp; voucher tersedia</span>
         </a>
       </div>
 
-      <!-- Operating hours -->
-      <div class="hours">
+      <div class="hours-box">
         <h3 class="hours-title">Jam Buka</h3>
-        <p>Senin – Sabtu &nbsp;|&nbsp; 10.00 – 21.00 WIB</p>
-        <p>Minggu &nbsp;|&nbsp; 11.00 – 20.00 WIB</p>
+        <p><strong>Senin – Sabtu</strong>&nbsp;&nbsp;|&nbsp;&nbsp;10.00 – 21.00 WIB</p>
+        <p><strong>Minggu</strong>&nbsp;&nbsp;|&nbsp;&nbsp;11.00 – 20.00 WIB</p>
       </div>
-
     </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer" id="contact">
     <div class="container footer-inner">
-      <div class="footer-copy-block">
-        <p class="footer-brand">Ayam Kedaton</p>
-        <p class="footer-text">Hubungi kami untuk pesan langsung atau kunjungi lapak kami hari ini.</p>
+      <div class="footer-brand-col">
+        <img src="assets/logo.png" alt="Ayam Kedaton" class="footer-logo" />
+        <p class="footer-brand-name">Ayam Kedaton</p>
+        <p class="footer-tagline">Hubungi kami untuk pesan langsung atau kunjungi lapak kami hari ini.</p>
       </div>
-      <div class="footer-contact">
-        <p class="footer-address">
-          WhatsApp: <a href="https://wa.me/6281932320826" target="_blank">+62 819-3232-0826</a>
-        </p>
-        <p class="footer-address">Jl. [Nama Jalan], [Kelurahan], [Kota]</p>
+
+      <div class="footer-nav-col">
+        <h4 class="footer-col-heading">Navigasi</h4>
+        <nav>
+          <a href="#about">Tentang Kami</a>
+          <a href="#menu">Menu</a>
+          <a href="#order">Pesan Sekarang</a>
+          <a href="#contact">Kontak</a>
+        </nav>
       </div>
-      <div class="footer-socials">
-        <a href="https://instagram.com/YOURHANDLE" target="_blank">
-          <img src="assets/icons/instagram.png" alt="Instagram Ayam Kedaton" />
+
+      <div class="footer-contact-col">
+        <h4 class="footer-col-heading">Kontak</h4>
+        <a href="https://wa.me/6281932320826" target="_blank" rel="noopener" class="footer-phone">+62 819-3232-0826</a>
+        <p>Jl. [Nama Jalan], [Kelurahan], [Kota]</p>
+        <a href="https://wa.me/6281932320826" target="_blank" rel="noopener" class="footer-wa-btn">
+          <img src="assets/icons/whatsapp.png" alt="" />
+          WhatsApp Kami
         </a>
-        <a href="https://wa.me/6281932320826" target="_blank">
-          <img src="assets/icons/whatsapp.png" alt="WhatsApp Ayam Kedaton" />
-        </a>
       </div>
-      <p class="footer-copy">&copy; 2026 Ayam Kedaton. All rights reserved.</p>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Ayam Kedaton. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const header = document.querySelector('.site-header');
+  <!-- Mobile sticky CTA -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <a href="#order" class="btn btn-primary sticky-btn">Pesan Sekarang</a>
+  </div>
 
-    navToggle?.addEventListener('click', () => {
-      header.classList.toggle('nav-open');
+  <script src="sanity-config.js"></script>
+  <script>
+    /* ---- Nav ---- */
+    const toggle  = document.getElementById('nav-toggle');
+    const nav     = document.getElementById('main-nav');
+    const header  = document.getElementById('site-header');
+
+    toggle?.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
     });
 
-    document.querySelectorAll('.main-nav a').forEach((link) => {
+    nav?.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        header.classList.remove('nav-open');
+        nav.classList.remove('is-open');
+        toggle?.classList.remove('is-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
       });
     });
+
+    /* ---- Scroll: header + hero image + sticky CTA ---- */
+    const hero       = document.getElementById('hero');
+    const heroBgImg  = hero?.querySelector('.hero-bg-img');
+    const stickyCta  = document.getElementById('sticky-cta');
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 40;
+      header.classList.toggle('scrolled', scrolled);
+
+      if (heroBgImg) {
+        const parallax = Math.min(window.scrollY * 0.25, 80);
+        heroBgImg.style.transform = `scale(1.05) translateY(${parallax}px)`;
+      }
+
+      if (stickyCta) {
+        const heroBottom = hero?.getBoundingClientRect().bottom ?? 0;
+        const past = heroBottom < 0;
+        stickyCta.classList.toggle('visible', past);
+        stickyCta.setAttribute('aria-hidden', !past);
+      }
+    }, { passive: true });
+
+    /* Trigger once on load for header colour */
+    header.classList.toggle('scrolled', window.scrollY > 40);
+
+    /* ---- Scroll reveal ---- */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          setTimeout(() => entry.target.classList.add('visible'), delay);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.dataset.delay = (i % 3) * 80;
+      revealObserver.observe(el);
+    });
+
+    /* ---- Sanity / JSON content loading ---- */
+    const sanityConfig = window.SANITY_CONFIG || null;
+
+    async function fetchJSON(path) {
+      try {
+        const res = await fetch(path, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Network response not ok');
+        return await res.json();
+      } catch (e) { return null; }
+    }
+
+    async function fetchSanity(query) {
+      if (!sanityConfig || !sanityConfig.projectId || !query) return null;
+      try {
+        const url = `https://${sanityConfig.projectId}.api.sanity.io/v${sanityConfig.apiVersion}/data/query/${sanityConfig.dataset}?query=${encodeURIComponent(query)}`;
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error('Sanity fetch failed');
+        return await res.json();
+      } catch (e) { return null; }
+    }
+
+    function renderHero(data) {
+      if (!data) return;
+      const headline = document.querySelector('.hero-headline');
+      const sub      = document.querySelector('.hero-sub');
+      const eyebrow  = document.querySelector('.eyebrow');
+      const heroImg  = document.querySelector('.hero-bg-img');
+      if (headline && data.headline) headline.innerHTML = data.headline;
+      if (sub && data.sub)           sub.textContent    = data.sub;
+      if (eyebrow && data.eyebrow)   eyebrow.childNodes[eyebrow.childNodes.length - 1].textContent = ` ${data.eyebrow}`;
+      if (heroImg && data.image)     heroImg.src        = data.image;
+    }
+
+    function buildMenuCard(item) {
+      return `
+        <div class="menu-card reveal">
+          <div class="menu-img-wrap">
+            <img src="${item.image || 'assets/menu-1.jpg'}" alt="${item.name}" class="menu-img" loading="lazy" />
+            <div class="menu-img-overlay"></div>
+            <span class="price-tag">${item.price}</span>
+          </div>
+          <div class="menu-body">
+            <h4 class="menu-name">${item.name}</h4>
+            <p class="menu-desc">${item.description}</p>
+          </div>
+        </div>`;
+    }
+
+    function renderMenu(data) {
+      if (!data || !Array.isArray(data.items)) return;
+      const container = document.getElementById('menu-grid');
+      if (!container) return;
+      container.innerHTML = data.items.map(buildMenuCard).join('');
+      container.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    function renderTestimonials(data) {
+      if (!data || !Array.isArray(data.items)) return;
+      const container = document.querySelector('.testi-grid');
+      if (!container) return;
+      container.innerHTML = data.items.map(t => `
+        <article class="testi-card reveal">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">${t.text}</p>
+          <footer class="testi-footer">
+            <div class="testi-avatar">${t.author.charAt(0)}</div>
+            <div>
+              <p class="testi-name">${t.author}</p>
+              <p class="testi-role">Pelanggan Kedaton</p>
+            </div>
+          </footer>
+        </article>`).join('');
+      container.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
+
+    async function loadStaticContent() {
+      const [home, menu, testimonials] = await Promise.all([
+        fetchJSON('/content/home.json'),
+        fetchJSON('/content/menu.json'),
+        fetchJSON('/content/testimonials.json')
+      ]);
+      if (home)         renderHero(home);
+      if (menu)         renderMenu(menu);
+      if (testimonials) renderTestimonials(testimonials);
+    }
+
+    async function loadSanityContent() {
+      const [home, menu, testimonials] = await Promise.all([
+        fetchSanity(sanityConfig.query.home),
+        fetchSanity(sanityConfig.query.menu),
+        fetchSanity(sanityConfig.query.testimonials)
+      ]);
+      if (home?.result)         renderHero(home.result);
+      if (menu?.result)         renderMenu({ items: menu.result });
+      if (testimonials?.result) renderTestimonials({ items: testimonials.result });
+    }
+
+    (sanityConfig?.projectId ? loadSanityContent : loadStaticContent)();
   </script>
 </body>
 </html>
