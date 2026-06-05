@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ayam Kedaton – Cita Rasa Nusantara yang Otentik</title>
+  <title>Ayam Kedaton – Rasa Warisan Bikin Ketagihan</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,7 @@
         <img src="assets/logo.png" alt="Ayam Kedaton Logo" class="logo" />
         <div class="brand-text">
           <span class="brand-name">Ayam Kedaton</span>
-          <span class="brand-tagline">Cita Rasa Nusantara yang Otentik</span>
+          <span class="brand-tagline">Rasa Warisan Bikin Ketagihan</span>
         </div>
       </a>
 
@@ -48,17 +48,13 @@
 
     <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow">
-          <span class="eyebrow-line"></span>
-          Kedaton Heritage Since 2020
-        </span>
         <h1 class="hero-headline">
-          Ayam Panggang<br />
-          <em>&amp; Goreng</em><br />
+          Ayam <span class="hero-gold">Goreng</span><br />
+          <em><span class="hero-white">&amp;</span> Bacem</em><br />
           <span class="headline-gradient">Ala Kedaton</span>
         </h1>
         <p class="hero-sub">
-          Dimasak dengan bumbu rempah pilihan, langsung dari dapur kami untuk meja Anda.
+          Dimasak dengan bumbu rempah otentik, langsung dari dapur kami untuk meja anda.
         </p>
         <div class="hero-actions">
           <a href="#order" class="btn btn-primary">Pesan Sekarang</a>
@@ -66,10 +62,6 @@
         </div>
       </div>
 
-      <div class="hero-card">
-        <span class="hero-card-num">5+</span>
-        <span class="hero-card-label">Tahun Melayani</span>
-      </div>
     </div>
 
     <div class="scroll-hint" aria-hidden="true">
@@ -249,6 +241,7 @@
       <div class="testi-grid">
         <article class="testi-card reveal">
           <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
           <p class="testi-text">Ayamnya enak sekali, bumbunya pas dan tidak terlalu pedas. Sangat cocok untuk makan bersama keluarga.</p>
           <footer class="testi-footer">
             <div class="testi-avatar">S</div>
@@ -261,6 +254,7 @@
 
         <article class="testi-card reveal">
           <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
           <p class="testi-text">Pesanannya cepat sampai, tampilannya menarik, dan semua anggota keluarga suka.</p>
           <footer class="testi-footer">
             <div class="testi-avatar">B</div>
@@ -273,6 +267,7 @@
 
         <article class="testi-card reveal">
           <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
           <p class="testi-text">Paket keluarga hemat dan ayamnya tetap crispy sampai di rumah. Recommended banget!</p>
           <footer class="testi-footer">
             <div class="testi-avatar">W</div>
@@ -305,21 +300,21 @@
 
         <a href="https://r.grab.com/g/6-20260602_231611_3499ab9945774ee5b23472066f02435a_MEXMPS-6-C6TFHA2JVRAXNX"
            target="_blank" rel="noopener" class="order-card">
-          <img src="assets/icons/gofood.png" alt="" class="order-icon" />
+          <img src="assets/icons/gofood.png" alt="" class="order-icon order-icon--wide" />
           <span class="order-name">GoFood</span>
           <span class="order-hint">Antar ke rumah Anda</span>
         </a>
 
         <a href="https://r.grab.com/g/6-20260602_231611_3499ab9945774ee5b23472066f02435a_MEXMPS-6-C6TFHA2JVRAXNX"
            target="_blank" rel="noopener" class="order-card">
-          <img src="assets/icons/grabfood.png" alt="" class="order-icon" />
+          <img src="assets/icons/grabfood.png" alt="" class="order-icon order-icon--wide" />
           <span class="order-name">GrabFood</span>
           <span class="order-hint">Antar ke rumah Anda</span>
         </a>
 
         <a href="https://shopee.co.id/YOURLINK"
            target="_blank" rel="noopener" class="order-card">
-          <img src="assets/icons/shopeefood.png" alt="" class="order-icon" />
+          <img src="assets/icons/shopeefood.png" alt="" class="order-icon order-icon--wide" />
           <span class="order-name">ShopeeFood</span>
           <span class="order-hint">Promo &amp; voucher tersedia</span>
         </a>
@@ -502,6 +497,7 @@
       container.innerHTML = data.items.map(t => `
         <article class="testi-card reveal">
           <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
           <p class="testi-text">${t.text}</p>
           <footer class="testi-footer">
             <div class="testi-avatar">${t.author.charAt(0)}</div>
