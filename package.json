@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Djayoez/ayam-kedaton#readme",
   "dependencies": {
     "puppeteer": "^25.1.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
