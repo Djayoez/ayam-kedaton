@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO — updated dynamically for single articles -->
+  <title>Artikel &amp; Tips – Ayam Kedaton</title>
+  <meta name="description" content="Resep, cerita, dan tips seputar kuliner ayam Nusantara dari dapur Ayam Kedaton." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" id="canonical" href="" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" id="og-type" />
+  <meta property="og:site_name"   content="Ayam Kedaton" />
+  <meta property="og:title"       content="Artikel &amp; Tips – Ayam Kedaton" id="og-title" />
+  <meta property="og:description" content="Resep, cerita, dan tips seputar kuliner ayam Nusantara." id="og-desc" />
+  <meta property="og:image"       content="" id="og-image" />
+  <meta property="og:url"         content="" id="og-url" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Artikel &amp; Tips – Ayam Kedaton" id="tw-title" />
+  <meta name="twitter:description" content="Resep, cerita, dan tips seputar kuliner ayam Nusantara." id="tw-desc" />
+  <meta name="twitter:image"       content="" id="tw-image" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="artikel.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap&font-display=swap" rel="stylesheet" />
+
+  <!-- JSON-LD structured data — injected by JS for articles -->
+  <script type="application/ld+json" id="json-ld">{}</script>
+</head>
+<body class="artikel-page">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header scrolled" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.png" alt="Ayam Kedaton Logo" class="logo" />
+        <div class="brand-text">
+          <span class="brand-name">Ayam Kedaton</span>
+          <span class="brand-tagline">Rasa Warisan Bikin Ketagihan</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html">Beranda</a>
+        <a href="index.html#about">Tentang</a>
+        <a href="index.html#menu">Menu</a>
+        <a href="artikel.html" class="nav-active">Artikel</a>
+        <a href="index.html#order">Pesan</a>
+        <a href="index.html#contact">Kontak</a>
+        <a href="index.html#order" class="nav-cta">Pesan Sekarang</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main id="main">
+
+    <!-- ── LIST VIEW ───────────────────────────────────────────────── -->
+    <div id="view-list">
+      <div class="artikel-hero">
+        <div class="container">
+          <span class="pill-label">Dari Dapur Kami</span>
+          <h1 class="artikel-hero-title">Artikel &amp; Tips</h1>
+          <p class="artikel-hero-sub">Resep, cerita, dan info seputar kuliner Nusantara</p>
+        </div>
+      </div>
+
+      <section class="artikel-list-section">
+        <div class="container">
+          <!-- Tag filter -->
+          <div class="tag-filter" id="tag-filter" role="group" aria-label="Filter artikel">
+            <button class="tag-btn active" data-tag="">Semua</button>
+          </div>
+
+          <!-- Article grid -->
+          <div class="artikel-grid" id="artikel-grid"></div>
+
+          <div id="no-posts" class="no-posts" hidden>
+            <p>Belum ada artikel. Tambahkan artikel pertama di Sanity Studio.</p>
+            <a href="#" class="btn btn-primary" id="studio-link">Buka Sanity Studio</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── SINGLE ARTICLE VIEW ──────────────────────────────────────── -->
+    <div id="view-single" hidden>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+          <a href="index.html">Beranda</a>
+          <span aria-hidden="true">›</span>
+          <a href="artikel.html">Artikel</a>
+          <span aria-hidden="true">›</span>
+          <span id="breadcrumb-title">…</span>
+        </div>
+      </nav>
+
+      <article class="single-article">
+        <div class="container single-container">
+
+          <header class="single-header">
+            <div id="single-tags" class="single-tags"></div>
+            <h1 id="single-title" class="single-title"></h1>
+            <div class="single-meta">
+              <span id="single-author"></span>
+              <span class="meta-dot" aria-hidden="true">·</span>
+              <time id="single-date"></time>
+            </div>
+          </header>
+
+          <div id="single-image-wrap" class="single-image-wrap" hidden>
+            <img id="single-image" src="" alt="" class="single-image" />
+          </div>
+
+          <div id="single-body" class="single-body prose"></div>
+
+          <!-- Share -->
+          <div class="single-share">
+            <p class="share-label">Bagikan artikel ini:</p>
+            <div class="share-buttons">
+              <a id="share-wa" href="#" target="_blank" rel="noopener" class="share-btn share-btn--wa">
+                <img src="assets/icons/whatsapp.png" alt="" /> WhatsApp
+              </a>
+              <button id="share-copy" class="share-btn share-btn--copy">
+                Salin Link
+              </button>
+            </div>
+          </div>
+
+          <!-- Back -->
+          <div class="single-back">
+            <a href="artikel.html" class="btn-back">← Kembali ke Artikel</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" id="contact">
+    <div class="container footer-inner">
+      <div class="footer-brand-col">
+        <img src="assets/logo.png" alt="Ayam Kedaton" class="footer-logo" />
+        <p class="footer-brand-name">Ayam Kedaton</p>
+        <p class="footer-tagline">Hubungi kami untuk pesan langsung atau kunjungi lapak kami hari ini.</p>
+      </div>
+      <div class="footer-nav-col">
+        <h4 class="footer-col-heading">Navigasi</h4>
+        <nav>
+          <a href="index.html#about">Tentang Kami</a>
+          <a href="index.html#menu">Menu</a>
+          <a href="artikel.html">Artikel</a>
+          <a href="index.html#order">Pesan Sekarang</a>
+        </nav>
+      </div>
+      <div class="footer-contact-col">
+        <h4 class="footer-col-heading">Kontak</h4>
+        <a href="https://wa.me/6281932320826" target="_blank" rel="noopener" class="footer-phone">+62 819-3232-0826</a>
+        <p>Jl. [Nama Jalan], [Kelurahan], [Kota]</p>
+        <a href="https://wa.me/6281932320826" target="_blank" rel="noopener" class="footer-wa-btn">
+          <img src="assets/icons/whatsapp.png" alt="" /> WhatsApp Kami
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container"><p>&copy; 2026 Ayam Kedaton. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="sanity-config.js"></script>
+  <script>
+  /* ─── Config ───────────────────────────────────────────── */
+  const cfg = window.SANITY_CONFIG;
+  const BASE_URL = cfg
+    ? `https://${cfg.projectId}.api.sanity.io/v${cfg.apiVersion}/data/query/${cfg.dataset}`
+    : null;
+
+  const SITE_URL = 'https://djayoez.github.io/ayam-kedaton';
+  const ARTICLE_URL = `${SITE_URL}/artikel.html`;
+
+  /* ─── Nav ──────────────────────────────────────────────── */
+  const toggle = document.getElementById('nav-toggle');
+  const nav    = document.getElementById('main-nav');
+  toggle?.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  nav?.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+    nav.classList.remove('is-open');
+    toggle?.classList.remove('is-open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }));
+
+  /* ─── Sanity fetch ─────────────────────────────────────── */
+  async function query(groq, params = {}) {
+    if (!BASE_URL) return null;
+    try {
+      const qs = new URLSearchParams({ query: groq, ...Object.fromEntries(
+        Object.entries(params).map(([k, v]) => [`$${k}`, JSON.stringify(v)])
+      )});
+      const res = await fetch(`${BASE_URL}?${qs}`, { cache: 'no-store' });
+      if (!res.ok) return null;
+      const json = await res.json();
+      return json.result ?? null;
+    } catch { return null; }
+  }
+
+  /* ─── Portable Text → HTML ─────────────────────────────── */
+  function ptToHtml(blocks) {
+    if (!Array.isArray(blocks)) return '';
+    return blocks.map(block => {
+      if (block._type === 'image') {
+        const url = block.asset?.url || block.asset?._ref || '';
+        if (!url) return '';
+        const imgUrl = url.startsWith('image-')
+          ? `https://cdn.sanity.io/images/${cfg?.projectId}/production/${url.replace('image-','').replace(/-(\w+)$/, '.$1')}`
+          : url;
+        return `<figure class="prose-img"><img src="${imgUrl}" alt="${block.alt || ''}" loading="lazy" />${block.caption ? `<figcaption>${block.caption}</figcaption>` : ''}</figure>`;
+      }
+      if (block._type !== 'block') return '';
+
+      const marks = block.markDefs || [];
+      const children = (block.children || []).map(span => {
+        let t = (span.text || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        (span.marks || []).forEach(m => {
+          if (m === 'strong') t = `<strong>${t}</strong>`;
+          else if (m === 'em') t = `<em>${t}</em>`;
+          else if (m === 'code') t = `<code>${t}</code>`;
+          else {
+            const def = marks.find(d => d._key === m);
+            if (def?._type === 'link') {
+              const target = def.blank ? ' target="_blank" rel="noopener"' : '';
+              t = `<a href="${def.href}"${target}>${t}</a>`;
+            }
+          }
+        });
+        return t;
+      }).join('');
+
+      const tag = { h2:'h2', h3:'h3', h4:'h4', blockquote:'blockquote', normal:'p' }[block.style] || 'p';
+      return `<${tag}>${children}</${tag}>`;
+    }).join('\n');
+  }
+
+  /* ─── Format date ──────────────────────────────────────── */
+  function fmtDate(iso) {
+    if (!iso) return '';
+    return new Date(iso).toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
+  }
+
+  /* ─── Placeholder posts (shown when Sanity has no content yet) ─ */
+  const PLACEHOLDER_POSTS = [
+    {
+      slug: null,
+      mainImage: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&q=75',
+      tags: ['Resep'],
+      title: '5 Rahasia Bumbu Ayam Bacem yang Bikin Nagih',
+      excerpt: 'Temukan rahasia bumbu bacem autentik ala nenek moyang yang membuat Ayam Kedaton begitu khas dan digemari semua kalangan.',
+      author: 'Tim Ayam Kedaton',
+      publishedAt: '2026-05-15'
+    },
+    {
+      slug: null,
+      mainImage: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&auto=format&q=75',
+      tags: ['Tips'],
+      title: 'Tips Memilih Ayam Segar untuk Masakan Lezat',
+      excerpt: 'Kualitas bahan baku sangat menentukan cita rasa masakan. Pelajari cara memilih ayam segar yang tepat sebelum memasak.',
+      author: 'Tim Ayam Kedaton',
+      publishedAt: '2026-04-28'
+    },
+    {
+      slug: null,
+      mainImage: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&q=75',
+      tags: ['Kuliner'],
+      title: 'Mengenal Tradisi Kuliner Ayam Panggang Nusantara',
+      excerpt: 'Ayam panggang telah menjadi bagian dari tradisi kuliner Indonesia selama berabad-abad. Simak sejarah dan filosofi di baliknya.',
+      author: 'Tim Ayam Kedaton',
+      publishedAt: '2026-04-10'
+    }
+  ];
+
+  /* ─── Build article card ───────────────────────────────── */
+  function buildCard(post) {
+    const img = post.mainImage
+      ? `<img src="${post.mainImage}" alt="${post.title}" class="acard-img" loading="lazy" />`
+      : `<div class="acard-img acard-img--placeholder"></div>`;
+    const tags = (post.tags || []).slice(0,3).map(t =>
+      `<span class="acard-tag">${t}</span>`).join('');
+    const isPlaceholder = !post.slug;
+    const tag = isPlaceholder ? 'div' : 'a';
+    const href = isPlaceholder ? '' : `href="artikel.html?slug=${post.slug}"`;
+    const placeholderAttr = isPlaceholder ? 'aria-label="Segera hadir"' : '';
+    const cardClass = isPlaceholder
+      ? 'acard acard--placeholder visible'
+      : 'acard reveal';
+    return `
+      <${tag} ${href} ${placeholderAttr} class="${cardClass}">
+        <div class="acard-img-wrap">${img}<div class="acard-overlay"></div></div>
+        <div class="acard-body">
+          ${tags ? `<div class="acard-tags">${tags}</div>` : ''}
+          <h2 class="acard-title">${post.title}</h2>
+          <p class="acard-excerpt">${post.excerpt || ''}</p>
+          <div class="acard-footer">
+            <span class="acard-author">${post.author || ''}</span>
+            <time class="acard-date">${fmtDate(post.publishedAt)}</time>
+          </div>
+        </div>
+      </${tag}>`;
+  }
+
+  /* ─── SEO helpers ──────────────────────────────────────── */
+  function setSeo({ title, desc, image, url, type = 'website' }) {
+    document.title = title;
+    document.querySelector('meta[name="description"]').setAttribute('content', desc);
+    document.getElementById('og-type').setAttribute('content', type);
+    document.getElementById('og-title').setAttribute('content', title);
+    document.getElementById('og-desc').setAttribute('content', desc);
+    document.getElementById('og-image').setAttribute('content', image || '');
+    document.getElementById('og-url').setAttribute('content', url);
+    document.getElementById('og-image').setAttribute('content', url);
+    document.getElementById('tw-title').setAttribute('content', title);
+    document.getElementById('tw-desc').setAttribute('content', desc);
+    document.getElementById('tw-image').setAttribute('content', image || '');
+    document.getElementById('canonical').setAttribute('href', url);
+  }
+
+  function setJsonLd(data) {
+    document.getElementById('json-ld').textContent = JSON.stringify(data);
+  }
+
+  /* ─── Load article list ────────────────────────────────── */
+  let allPosts = [];
+
+  async function loadList() {
+    document.getElementById('view-list').removeAttribute('hidden');
+    document.getElementById('view-single').setAttribute('hidden', '');
+
+    setSeo({
+      title: 'Artikel & Tips – Ayam Kedaton',
+      desc: 'Resep, cerita, dan tips seputar kuliner ayam Nusantara dari dapur Ayam Kedaton.',
+      url: ARTICLE_URL,
+    });
+
+    // Show placeholders immediately so the page is never blank
+    renderList(PLACEHOLDER_POSTS);
+
+    // Then try to fetch real posts from Sanity
+    if (!BASE_URL) return;
+
+    const posts = await query(`*[_type == "post"] | order(publishedAt desc) {
+      title, "slug": slug.current, excerpt, publishedAt, author, tags,
+      "mainImage": mainImage.asset->url
+    }`);
+
+    if (!posts || posts.length === 0) return;
+
+    allPosts = posts;
+    renderList(posts);
+    buildTagFilter(posts);
+  }
+
+  function renderList(posts) {
+    const grid = document.getElementById('artikel-grid');
+    grid.innerHTML = posts.map(buildCard).join('');
+    document.getElementById('no-posts').hidden = true;
+    // Re-observe reveals
+    grid.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 3) * 80}ms`;
+      revealObs.observe(el);
+    });
+  }
+
+  function showNoPosts() {
+    document.getElementById('artikel-grid').innerHTML = '';
+    document.getElementById('no-posts').hidden = false;
+  }
+
+  function buildTagFilter(posts) {
+    const tagSet = new Set(posts.flatMap(p => p.tags || []));
+    if (tagSet.size === 0) return;
+    const container = document.getElementById('tag-filter');
+    tagSet.forEach(tag => {
+      const btn = document.createElement('button');
+      btn.className = 'tag-btn';
+      btn.dataset.tag = tag;
+      btn.textContent = tag;
+      container.appendChild(btn);
+    });
+    container.addEventListener('click', e => {
+      const btn = e.target.closest('.tag-btn');
+      if (!btn) return;
+      container.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.dataset.tag;
+      renderList(tag ? allPosts.filter(p => (p.tags || []).includes(tag)) : allPosts);
+    });
+  }
+
+  /* ─── Load single article ──────────────────────────────── */
+  async function loadSingle(slug) {
+    document.getElementById('view-list').setAttribute('hidden', '');
+    document.getElementById('view-single').removeAttribute('hidden');
+
+    if (!BASE_URL) { window.location.href = 'artikel.html'; return; }
+
+    const post = await query(`*[_type == "post" && slug.current == $slug][0] {
+      title, "slug": slug.current, excerpt, publishedAt, author, tags, body,
+      metaTitle, metaDescription,
+      "mainImage": mainImage.asset->url,
+      "mainImageAlt": mainImage.alt
+    }`, { slug });
+
+    if (!post) { window.location.href = 'artikel.html'; return; }
+
+    // SEO
+    const seoTitle = (post.metaTitle || post.title) + ' – Ayam Kedaton';
+    const seoDesc  = post.metaDescription || post.excerpt || '';
+    const postUrl  = `${ARTICLE_URL}?slug=${slug}`;
+    setSeo({ title: seoTitle, desc: seoDesc, image: post.mainImage, url: postUrl, type: 'article' });
+
+    // JSON-LD Article
+    setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      description: seoDesc,
+      image: post.mainImage || '',
+      author: { '@type': 'Organization', name: post.author || 'Ayam Kedaton' },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Ayam Kedaton',
+        logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/logo.png` }
+      },
+      datePublished: post.publishedAt || '',
+      url: postUrl,
+    });
+
+    // Render
+    document.getElementById('breadcrumb-title').textContent = post.title;
+    document.getElementById('single-title').textContent     = post.title;
+    document.getElementById('single-author').textContent    = post.author || 'Ayam Kedaton';
+    document.getElementById('single-date').setAttribute('datetime', post.publishedAt || '');
+    document.getElementById('single-date').textContent = fmtDate(post.publishedAt);
+
+    const tagsEl = document.getElementById('single-tags');
+    tagsEl.innerHTML = (post.tags || []).map(t => `<span class="acard-tag">${t}</span>`).join('');
+
+    if (post.mainImage) {
+      const imgEl = document.getElementById('single-image');
+      imgEl.src = post.mainImage;
+      imgEl.alt = post.mainImageAlt || post.title;
+      document.getElementById('single-image-wrap').removeAttribute('hidden');
+    }
+
+    document.getElementById('single-body').innerHTML = ptToHtml(post.body);
+
+    // Share
+    const waText = encodeURIComponent(`${post.title} – ${postUrl}`);
+    document.getElementById('share-wa').href = `https://wa.me/?text=${waText}`;
+    document.getElementById('share-copy').addEventListener('click', () => {
+      navigator.clipboard.writeText(postUrl).then(() => {
+        document.getElementById('share-copy').textContent = 'Tersalin!';
+        setTimeout(() => document.getElementById('share-copy').textContent = 'Salin Link', 2000);
+      });
+    });
+  }
+
+  /* ─── Scroll reveal ────────────────────────────────────── */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  /* ─── Router ───────────────────────────────────────────── */
+  const slug = new URLSearchParams(location.search).get('slug');
+  if (slug) loadSingle(slug); else loadList();
+  </script>
+</body>
+</html>

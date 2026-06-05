@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ayam Kedaton – Rasa Warisan Bikin Ketagihan</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="artikel.css" />
   <!-- Preload hero image so it paints immediately (LCP) -->
   <link rel="preload" as="image" href="assets/menu-2.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,8 +33,10 @@
       </button>
 
       <nav class="main-nav" id="main-nav" role="navigation">
+        <a href="#">Beranda</a>
         <a href="#about">Tentang</a>
         <a href="#menu">Menu</a>
+        <a href="artikel.html">Artikel</a>
         <a href="#order">Pesan</a>
         <a href="#contact">Kontak</a>
         <a href="#order" class="nav-cta">Pesan Sekarang</a>
@@ -279,6 +282,21 @@
             </div>
           </footer>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG PREVIEW ===== -->
+  <section class="blog-preview-section" id="artikel">
+    <div class="container">
+      <div class="section-header">
+        <span class="pill-label">Dari Dapur Kami</span>
+        <h2 class="section-title">Artikel &amp; Tips</h2>
+        <p class="section-sub">Resep, cerita, dan info seputar kuliner Nusantara</p>
+      </div>
+      <div class="blog-preview-grid" id="blog-preview-grid"></div>
+      <div class="blog-preview-cta">
+        <a href="artikel.html" class="btn btn-primary">Baca di sini</a>
       </div>
     </div>
   </section>
@@ -535,6 +553,48 @@
     }
 
     (sanityConfig?.projectId ? loadSanityContent : loadStaticContent)();
+
+    /* ---- Blog preview ---- */
+    async function loadBlogPreview() {
+      if (!sanityConfig?.projectId) {
+        document.getElementById('blog-preview-grid').innerHTML = '';
+        return;
+      }
+      const posts = await fetchSanity(`*[_type == "post"] | order(publishedAt desc) [0..2] {
+        title, "slug": slug.current, excerpt, publishedAt, author, tags,
+        "mainImage": mainImage.asset->url
+      }`);
+      const grid = document.getElementById('blog-preview-grid');
+      if (!posts || posts.length === 0) { grid.innerHTML = ''; return; }
+
+      grid.innerHTML = posts.map(p => {
+        const img = p.mainImage
+          ? `<img src="${p.mainImage}" alt="${p.title}" class="acard-img" loading="lazy" />`
+          : `<div class="acard-img acard-img--placeholder"></div>`;
+        const date = p.publishedAt
+          ? new Date(p.publishedAt).toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'})
+          : '';
+        return `
+          <a href="artikel.html?slug=${p.slug}" class="acard reveal">
+            <div class="acard-img-wrap">${img}<div class="acard-overlay"></div></div>
+            <div class="acard-body">
+              <h3 class="acard-title">${p.title}</h3>
+              <p class="acard-excerpt">${p.excerpt || ''}</p>
+              <div class="acard-footer">
+                <span class="acard-author">${p.author || ''}</span>
+                <time class="acard-date">${date}</time>
+              </div>
+            </div>
+          </a>`;
+      }).join('');
+
+      grid.querySelectorAll('.reveal').forEach((el, i) => {
+        el.dataset.delay = i * 80;
+        revealObserver.observe(el);
+      });
+    }
+
+    loadBlogPreview();
   </script>
 </body>
 </html>

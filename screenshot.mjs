@@ -26,7 +26,8 @@ const browser = await puppeteer.launch({
 
 const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
-await page.goto(url, { waitUntil: 'networkidle2' });
+await page.goto(url, { waitUntil: 'domcontentloaded' });
+await new Promise(r => setTimeout(r, 600)); // let inline scripts execute
 
 // Scroll through the page to trigger IntersectionObserver-based reveal animations,
 // then wait for CSS transitions (0.65s) to complete before capturing.
