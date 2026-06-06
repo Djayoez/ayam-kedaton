@@ -712,7 +712,66 @@ button { cursor: pointer; font: inherit; }
   box-shadow: 0 10px 32px rgba(200, 82, 42, 0.5);
 }
 
-/* ─── 15. Scroll Reveal ─────────────────────── */
+/* ─── 15. Floating WhatsApp Button ─────────── */
+@keyframes wa-ring {
+  0%   { transform: scale(1);   opacity: 0.55; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+.wa-float {
+  position: fixed;
+  bottom: 24px; right: 20px;
+  z-index: 490;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+  transition: transform 0.22s var(--ease-out), box-shadow 0.22s var(--ease-out);
+}
+
+.wa-float::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: #25D366;
+  animation: wa-ring 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+.wa-float img {
+  width: 30px; height: 30px;
+  object-fit: contain;
+  position: relative; z-index: 1;
+}
+
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
+}
+
+.wa-float-label {
+  position: absolute;
+  right: calc(100% + 10px);
+  background: var(--color-dark);
+  color: #fff;
+  font-size: 0.75rem; font-weight: 600;
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 999px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(6px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.wa-float:hover .wa-float-label,
+.wa-float:focus-visible .wa-float-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── 16. Scroll Reveal ────────────────────── */
 .reveal {
   opacity: 0; transform: translateY(28px);
   transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
