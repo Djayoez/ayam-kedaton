@@ -8,6 +8,6 @@ window.SANITY_CONFIG = {
   query: {
     home: '*[_type == "siteSettings"][0]{eyebrow, headline, sub, "image": heroImage.asset->url}',
     menu: '*[_type == "menuItem"] | order(category->order asc, order asc) {name, description, price, "category": category->name, "image": image.asset->url}',
-    testimonials: '*[_type == "testimonial"]{author, text}'
+    testimonials: '*[_type == "testimonial"]{author, text, platform}'
   }
 };
