@@ -5,23 +5,46 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
+      title: 'Nama Menu',
       type: 'string'
     },
     {
+      name: 'category',
+      title: 'Kategori',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Ayam Panggang', value: 'Ayam Panggang' },
+          { title: 'Ayam Goreng',   value: 'Ayam Goreng'   },
+          { title: 'Paket Hemat',   value: 'Paket Hemat'   },
+        ],
+        layout: 'radio'
+      }
+    },
+    {
       name: 'description',
-      title: 'Description',
+      title: 'Deskripsi',
       type: 'text'
     },
     {
       name: 'price',
-      title: 'Price',
+      title: 'Harga (contoh: Rp 35.000)',
       type: 'string'
     },
     {
+      name: 'order',
+      title: 'Urutan dalam kategori (angka kecil tampil duluan)',
+      type: 'number',
+      initialValue: 0
+    },
+    {
       name: 'image',
-      title: 'Image',
-      type: 'image'
+      title: 'Foto Menu',
+      type: 'image',
+      options: { hotspot: true }
     }
-  ]
+  ],
+  preview: {
+    select: { title: 'name', subtitle: 'category', media: 'image' }
+  }
 };

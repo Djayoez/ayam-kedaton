@@ -7,7 +7,7 @@ window.SANITY_CONFIG = {
   useCdn: true,
   query: {
     home: '*[_type == "siteSettings"][0]{eyebrow, headline, sub, "image": heroImage.asset->url}',
-    menu: '*[_type == "menuItem"]{name, description, price, "image": image.asset->url}',
+    menu: '*[_type == "menuItem"] | order(category asc, order asc) {name, description, price, category, "image": image.asset->url}',
     testimonials: '*[_type == "testimonial"]{author, text}'
   }
 };
