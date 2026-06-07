@@ -39,6 +39,13 @@ export default {
     }
   ],
   preview: {
-    select: { title: 'name', subtitle: 'category.name', media: 'image' }
+    select: {
+      title: 'name',
+      subtitle: 'category.name',
+      media: 'image'
+    },
+    prepare({ title, subtitle, media }) {
+      return { title: title || 'Tanpa nama', subtitle: subtitle || '—', media }
+    }
   }
 };
