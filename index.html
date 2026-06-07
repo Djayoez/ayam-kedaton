@@ -579,10 +579,11 @@
         document.getElementById('blog-preview-grid').innerHTML = '';
         return;
       }
-      const posts = await fetchSanity(`*[_type == "post"] | order(publishedAt desc) [0..2] {
+      const res = await fetchSanity(`*[_type == "post"] | order(publishedAt desc) [0..2] {
         title, "slug": slug.current, excerpt, publishedAt, author, tags,
         "mainImage": mainImage.asset->url
       }`);
+      const posts = res?.result;
       const grid = document.getElementById('blog-preview-grid');
       if (!posts || posts.length === 0) { grid.innerHTML = ''; return; }
 
