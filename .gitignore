@@ -16,3 +16,7 @@ Thumbs.db
 
 # Dev screenshots
 screenshots/
+
+# Environment / secrets
+.env
+sanity/.env
