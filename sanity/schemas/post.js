@@ -115,6 +115,24 @@ export default defineType({
       options: { layout: 'tags' },
     }),
 
+    // ── FAQ (AEO / GEO) ──────────────────────────────────────────────────
+    defineField({
+      name: 'faq',
+      title: 'FAQ — Tanya Jawab (AEO/GEO)',
+      type: 'array',
+      description: 'Pertanyaan & jawaban di akhir artikel. Membantu Google, ChatGPT, Perplexity mengekstrak info dari artikel ini.',
+      of: [{
+        type: 'object',
+        name: 'faqItem',
+        title: 'Pertanyaan & Jawaban',
+        fields: [
+          defineField({ name: 'question', title: 'Pertanyaan', type: 'string', validation: Rule => Rule.required() }),
+          defineField({ name: 'answer',   title: 'Jawaban',    type: 'text',   validation: Rule => Rule.required() }),
+        ],
+        preview: { select: { title: 'question', subtitle: 'answer' } }
+      }],
+    }),
+
     // ── SEO ──────────────────────────────────────────────────────────────
     defineField({
       name: 'metaTitle',

@@ -118,6 +118,8 @@
               <span id="single-author"></span>
               <span class="meta-dot" aria-hidden="true">·</span>
               <time id="single-date"></time>
+              <span class="meta-dot" aria-hidden="true">·</span>
+              <span id="single-reading-time"></span>
             </div>
           </header>
 
@@ -126,6 +128,21 @@
           </div>
 
           <div id="single-body" class="single-body prose"></div>
+
+          <!-- Internal CTA -->
+          <div class="single-cta-block">
+            <p class="single-cta-label">Mau coba Ayam Kedaton?</p>
+            <div class="single-cta-buttons">
+              <a href="https://wa.me/6285215815860?text=Halo%20Ayam%20Kedaton%2C%20saya%20mau%20pesan..." target="_blank" rel="noopener" class="btn btn-primary">Pesan via WhatsApp</a>
+              <a href="index.html#menu" class="btn btn-outline">Lihat Menu</a>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <section id="single-faq" class="single-faq" hidden>
+            <h2 class="faq-heading">Pertanyaan yang Sering Ditanyakan</h2>
+            <div id="faq-list" class="faq-list"></div>
+          </section>
 
           <!-- Share -->
           <div class="single-share">
@@ -435,7 +452,8 @@
       title, "slug": slug.current, excerpt, publishedAt, author, tags, body,
       metaTitle, metaDescription,
       "mainImage": mainImage.asset->url,
-      "mainImageAlt": mainImage.alt
+      "mainImageAlt": mainImage.alt,
+      faq[] { question, answer }
     }`, { slug });
 
     if (!post) { window.location.href = 'artikel.html'; return; }
@@ -446,9 +464,13 @@
     const postUrl  = `${ARTICLE_URL}?slug=${slug}`;
     setSeo({ title: seoTitle, desc: seoDesc, image: post.mainImage, url: postUrl, type: 'article' });
 
-    // JSON-LD Article
-    setJsonLd({
-      '@context': 'https://schema.org',
+    // Reading time
+    const bodyText = (post.body || []).filter(b => b._type === 'block').map(b => (b.children || []).map(c => c.text || '').join(' ')).join(' ');
+    const wordCount = bodyText.trim().split(/\s+/).filter(Boolean).length;
+    const readMins  = Math.max(1, Math.round(wordCount / 200));
+
+    // JSON-LD: Article + BreadcrumbList + FAQPage
+    const articleSchema = {
       '@type': 'Article',
       headline: post.title,
       description: seoDesc,
@@ -461,14 +483,36 @@
       },
       datePublished: post.publishedAt || '',
       url: postUrl,
-    });
+      wordCount,
+    };
+    const breadcrumbSchema = {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Beranda',  item: SITE_URL },
+        { '@type': 'ListItem', position: 2, name: 'Artikel',  item: `${SITE_URL}/artikel.html` },
+        { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
+      ],
+    };
+    const graph = [articleSchema, breadcrumbSchema];
+    if (post.faq && post.faq.length > 0) {
+      graph.push({
+        '@type': 'FAQPage',
+        mainEntity: post.faq.map(f => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer }
+        }))
+      });
+    }
+    setJsonLd({ '@context': 'https://schema.org', '@graph': graph });
 
     // Render
     document.getElementById('breadcrumb-title').textContent = post.title;
     document.getElementById('single-title').textContent     = post.title;
     document.getElementById('single-author').textContent    = post.author || 'Ayam Kedaton';
     document.getElementById('single-date').setAttribute('datetime', post.publishedAt || '');
-    document.getElementById('single-date').textContent = fmtDate(post.publishedAt);
+    document.getElementById('single-date').textContent      = fmtDate(post.publishedAt);
+    document.getElementById('single-reading-time').textContent = `${readMins} menit baca`;
 
     const tagsEl = document.getElementById('single-tags');
     tagsEl.innerHTML = (post.tags || []).map(t => `<span class="acard-tag">${t}</span>`).join('');
@@ -481,6 +525,17 @@
     }
 
     document.getElementById('single-body').innerHTML = ptToHtml(post.body);
+
+    // FAQ
+    if (post.faq && post.faq.length > 0) {
+      const faqSection = document.getElementById('single-faq');
+      faqSection.removeAttribute('hidden');
+      document.getElementById('faq-list').innerHTML = post.faq.map(f => `
+        <div class="faq-item">
+          <h3 class="faq-question">${f.question}</h3>
+          <p class="faq-answer">${f.answer}</p>
+        </div>`).join('');
+    }
 
     // Share
     const waText = encodeURIComponent(`${post.title} – ${postUrl}`);
