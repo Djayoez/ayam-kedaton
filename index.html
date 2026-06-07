@@ -587,10 +587,10 @@
       const grid = document.getElementById('blog-preview-grid');
       if (!posts || posts.length === 0) { grid.innerHTML = ''; return; }
 
-      grid.innerHTML = posts.map(p => {
-        const img = p.mainImage
-          ? `<img src="${sanityImg(p.mainImage, {w:600})}" alt="${p.title}" class="acard-img" loading="lazy" />`
-          : `<div class="acard-img acard-img--placeholder"></div>`;
+      const BLOG_FALLBACKS = ['assets/menu-2.jpg', 'assets/menu-box.jpg', 'assets/menu-paket.jpg'];
+      grid.innerHTML = posts.map((p, idx) => {
+        const imgSrc = p.mainImage ? sanityImg(p.mainImage, {w:600}) : BLOG_FALLBACKS[idx % BLOG_FALLBACKS.length];
+        const img = `<img src="${imgSrc}" alt="${p.title}" class="acard-img" loading="lazy" />`;
         const date = p.publishedAt
           ? new Date(p.publishedAt).toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'})
           : '';
