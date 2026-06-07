@@ -11,15 +11,9 @@ export default {
     {
       name: 'category',
       title: 'Kategori',
+      description: 'Contoh: Ayam Panggang, Ayam Goreng, Paket Hemat. Gunakan ejaan yang sama persis di semua menu dalam kategori yang sama.',
       type: 'string',
-      options: {
-        list: [
-          { title: 'Ayam Panggang', value: 'Ayam Panggang' },
-          { title: 'Ayam Goreng',   value: 'Ayam Goreng'   },
-          { title: 'Paket Hemat',   value: 'Paket Hemat'   },
-        ],
-        layout: 'radio'
-      }
+      validation: Rule => Rule.required().max(50)
     },
     {
       name: 'description',
