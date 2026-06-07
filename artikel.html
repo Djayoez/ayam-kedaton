@@ -194,11 +194,12 @@
   <script>
   /* ─── Config ───────────────────────────────────────────── */
   const cfg = window.SANITY_CONFIG;
-  const sanityHost = cfg?.useCdn
-    ? `${cfg.projectId}.apicdn.sanity.io`
-    : `${cfg?.projectId}.api.sanity.io`;
+  // On localhost use the local proxy (bypasses CORS). On GitHub Pages use CDN.
+  const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   const BASE_URL = cfg
-    ? `https://${sanityHost}/v${cfg.apiVersion}/data/query/${cfg.dataset}`
+    ? (isLocal
+        ? `${location.origin}/sanity-proxy`
+        : `https://${cfg.projectId}.apicdn.sanity.io/v${cfg.apiVersion}/data/query/${cfg.dataset}`)
     : null;
 
   const SITE_URL = 'https://djayoez.github.io/ayam-kedaton';
@@ -309,10 +310,11 @@
   ];
 
   /* ─── Build article card ───────────────────────────────── */
-  function buildCard(post) {
-    const img = post.mainImage
-      ? `<img src="${post.mainImage}" alt="${post.title}" class="acard-img" loading="lazy" />`
-      : `<div class="acard-img acard-img--placeholder"></div>`;
+  const FALLBACK_IMAGES = ['assets/menu-2.jpg', 'assets/menu-box.jpg', 'assets/menu-paket.jpg'];
+
+  function buildCard(post, idx = 0) {
+    const imgSrc = post.mainImage || FALLBACK_IMAGES[idx % FALLBACK_IMAGES.length];
+    const img = `<img src="${imgSrc}" alt="${post.title}" class="acard-img" loading="lazy" />`;
     const tags = (post.tags || []).slice(0,3).map(t =>
       `<span class="acard-tag">${t}</span>`).join('');
     const isPlaceholder = !post.slug;
@@ -390,7 +392,7 @@
 
   function renderList(posts) {
     const grid = document.getElementById('artikel-grid');
-    grid.innerHTML = posts.map(buildCard).join('');
+    grid.innerHTML = posts.map((post, idx) => buildCard(post, idx)).join('');
     document.getElementById('no-posts').hidden = true;
     // Re-observe reveals
     grid.querySelectorAll('.reveal').forEach((el, i) => {

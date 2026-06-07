@@ -1,4 +1,5 @@
 import http from 'http';
+import https from 'https';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -20,7 +21,22 @@ const MIME = {
   '.mp4':  'video/mp4',
 };
 
+// Proxy /sanity-proxy?query=... → Sanity CDN (bypasses browser CORS)
+function proxySanity(req, res) {
+  const qs = req.url.slice('/sanity-proxy'.length); // preserve ?query=...
+  const target = `https://0b8sjspb.apicdn.sanity.io/v2026-01-01/data/query/production${qs}`;
+  https.get(target, (upstream) => {
+    res.writeHead(upstream.statusCode, {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    });
+    upstream.pipe(res);
+  }).on('error', () => { res.writeHead(502); res.end('Sanity proxy error'); });
+}
+
 http.createServer((req, res) => {
+  if (req.url.startsWith('/sanity-proxy')) { proxySanity(req, res); return; }
+
   const urlPath = req.url.split('?')[0]; // strip query string
   let filePath = path.join(__dirname, urlPath === '/' ? 'index.html' : urlPath);
 
