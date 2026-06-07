@@ -463,7 +463,8 @@
     async function fetchSanity(query) {
       if (!sanityConfig || !sanityConfig.projectId || !query) return null;
       try {
-        const url = `https://${sanityConfig.projectId}.api.sanity.io/v${sanityConfig.apiVersion}/data/query/${sanityConfig.dataset}?query=${encodeURIComponent(query)}`;
+        const host = sanityConfig.useCdn ? `${sanityConfig.projectId}.apicdn.sanity.io` : `${sanityConfig.projectId}.api.sanity.io`;
+        const url = `https://${host}/v${sanityConfig.apiVersion}/data/query/${sanityConfig.dataset}?query=${encodeURIComponent(query)}`;
         const res = await fetch(url, { cache: 'no-store' });
         if (!res.ok) throw new Error('Sanity fetch failed');
         return await res.json();

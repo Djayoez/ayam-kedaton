@@ -194,8 +194,11 @@
   <script>
   /* ─── Config ───────────────────────────────────────────── */
   const cfg = window.SANITY_CONFIG;
+  const sanityHost = cfg?.useCdn
+    ? `${cfg.projectId}.apicdn.sanity.io`
+    : `${cfg?.projectId}.api.sanity.io`;
   const BASE_URL = cfg
-    ? `https://${cfg.projectId}.api.sanity.io/v${cfg.apiVersion}/data/query/${cfg.dataset}`
+    ? `https://${sanityHost}/v${cfg.apiVersion}/data/query/${cfg.dataset}`
     : null;
 
   const SITE_URL = 'https://djayoez.github.io/ayam-kedaton';
