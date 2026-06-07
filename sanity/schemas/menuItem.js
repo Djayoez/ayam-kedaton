@@ -11,9 +11,9 @@ export default {
     {
       name: 'category',
       title: 'Kategori',
-      description: 'Contoh: Ayam Panggang, Ayam Goreng, Paket Hemat. Gunakan ejaan yang sama persis di semua menu dalam kategori yang sama.',
-      type: 'string',
-      validation: Rule => Rule.required().max(50)
+      type: 'reference',
+      to: [{ type: 'category' }],
+      validation: Rule => Rule.required()
     },
     {
       name: 'description',
