@@ -587,7 +587,13 @@
       const grid = document.getElementById('blog-preview-grid');
       if (!posts || posts.length === 0) { grid.innerHTML = ''; return; }
 
-      const BLOG_FALLBACKS = ['assets/menu-2.jpg', 'assets/menu-box.jpg', 'assets/menu-paket.jpg'];
+      const BLOG_FALLBACKS = [
+        'https://images.unsplash.com/photo-1565299624946-b28f40a84680?w=600&q=75&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=75&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=75&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1540189549336-e6e99de72462?w=600&q=75&fit=crop&auto=format',
+        'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=75&fit=crop&auto=format',
+      ];
       grid.innerHTML = posts.map((p, idx) => {
         const imgSrc = p.mainImage ? sanityImg(p.mainImage, {w:600}) : BLOG_FALLBACKS[idx % BLOG_FALLBACKS.length];
         const img = `<img src="${imgSrc}" alt="${p.title}" class="acard-img" loading="lazy" />`;
