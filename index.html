@@ -452,6 +452,12 @@
     /* ---- Sanity / JSON content loading ---- */
     const sanityConfig = window.SANITY_CONFIG || null;
 
+    // Append Sanity image optimization params to any cdn.sanity.io URL
+    function sanityImg(url, { w = 800, q = 75 } = {}) {
+      if (!url || !url.includes('cdn.sanity.io')) return url;
+      return `${url}?w=${w}&auto=format&q=${q}&fit=max`;
+    }
+
     async function fetchJSON(path) {
       try {
         const res = await fetch(path, { cache: 'no-store' });
@@ -487,7 +493,7 @@
       return `
         <div class="menu-card reveal">
           <div class="menu-img-wrap">
-            <img src="${item.image || 'assets/menu-1.jpg'}" alt="${item.name}" class="menu-img" loading="lazy" />
+            <img src="${sanityImg(item.image, {w:600}) || 'assets/menu-1.jpg'}" alt="${item.name}" class="menu-img" loading="lazy" />
             <div class="menu-img-overlay"></div>
             <span class="price-tag">${item.price}</span>
           </div>
@@ -565,7 +571,7 @@
 
       grid.innerHTML = posts.map(p => {
         const img = p.mainImage
-          ? `<img src="${p.mainImage}" alt="${p.title}" class="acard-img" loading="lazy" />`
+          ? `<img src="${sanityImg(p.mainImage, {w:600})}" alt="${p.title}" class="acard-img" loading="lazy" />`
           : `<div class="acard-img acard-img--placeholder"></div>`;
         const date = p.publishedAt
           ? new Date(p.publishedAt).toLocaleDateString('id-ID', {day:'numeric', month:'long', year:'numeric'})
