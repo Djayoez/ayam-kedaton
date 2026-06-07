@@ -787,7 +787,9 @@ button { cursor: pointer; font: inherit; }
 
   .main-nav {
     position: static; transform: none;
+    height: auto; width: auto;
     background: transparent; flex-direction: row;
+    padding: 0; gap: 0; overflow: visible;
     gap: 28px; inset: auto;
   }
 
