@@ -4,7 +4,7 @@ window.SANITY_CONFIG = {
   projectId: '0b8sjspb',
   dataset: 'production',
   apiVersion: '2026-01-01',
-  useCdn: false,
+  useCdn: true,
   query: {
     home: '*[_type == "siteSettings"][0]{eyebrow, headline, sub, "image": heroImage.asset->url}',
     menu: '*[_type == "menuItem"]{name, description, price, "image": image.asset->url}',

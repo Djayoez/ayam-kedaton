@@ -21,7 +21,8 @@ const MIME = {
 };
 
 http.createServer((req, res) => {
-  let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+  const urlPath = req.url.split('?')[0]; // strip query string
+  let filePath = path.join(__dirname, urlPath === '/' ? 'index.html' : urlPath);
 
   if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
     filePath = path.join(filePath, 'index.html');
