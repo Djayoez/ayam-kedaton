@@ -476,7 +476,6 @@
       const sub      = document.querySelector('.hero-sub');
       const eyebrow  = document.querySelector('.eyebrow');
       const heroImg  = document.querySelector('.hero-bg-img');
-      if (headline && data.headline) headline.innerHTML = data.headline;
       if (sub && data.sub)           sub.textContent    = data.sub;
       if (eyebrow && data.eyebrow)   eyebrow.childNodes[eyebrow.childNodes.length - 1].textContent = ` ${data.eyebrow}`;
       // hero image is managed locally (assets/menu-2.jpg) — not overridden by CMS
