@@ -679,6 +679,14 @@ button { cursor: pointer; font: inherit; }
   font-size: 0.88rem;
 }
 
+.footer-social { margin-bottom: 20px; }
+.footer-social-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255,255,255,0.6); font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-social-link:hover { color: #E1306C; }
+
 .footer-phone {
   color: var(--color-secondary); font-weight: 600; font-size: 0.95rem;
 }
